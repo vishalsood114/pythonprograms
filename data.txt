@@ -1,0 +1,177 @@
+2. Working with Data
+2.1. Lists
+We’ve already seen quick introduction to lists in the previous chapter.
+
+>>> [1, 2, 3, 4]
+[1, 2, 3, 4]
+>>> ["hello", "world"]
+["hello", "world"]
+>>> [0, 1.5, "hello"]
+[0, 1.5, "hello"]
+>>> [0, 1.5, "hello"]
+[0, 1.5, "hello"]
+A List can contain another list as member.
+
+>>> a = [1, 2]
+>>> b = [1.5, 2, a]
+>>> b
+[1.5, 2, [1, 2]]
+The built-in function range can be used to create a list of integers.
+
+>>> range(4)
+[0, 1, 2, 3]
+>>> range(3, 6)
+[3, 4, 5]
+>>> range(2, 10, 3)
+[2, 5, 8]
+The built-in function len can be used to find the length of a list.
+
+>>> a = [1, 2, 3, 4]
+>>> len(a)
+4
+The + and * operators work even on lists.
+
+>>> a = [1, 2, 3]
+>>> b = [4, 5]
+>>> a + b
+[1, 2, 3, 4, 5]
+>>> b * 3
+[4, 5, 4, 5, 4, 5]
+List can be indexed to get individual entries. Value of index can go from 0 to (length of list - 1).
+
+>>> x = [1, 2]
+>>> x[0]
+1
+>>> x[1]
+2
+When a wrong index is used, python gives an error.
+
+>>> x = [1, 2, 3, 4]
+>>> x[6]
+Traceback (most recent call last):
+  File "<stdin>", line 1, in ?
+IndexError: list index out of range
+Negative indices can be used to index the list from right.
+
+>>> x = [1, 2, 3, 4]
+>>> x[-1]
+4
+>>> x [-2]
+3
+We can use list slicing to get part of a list.
+
+>>> x = [1, 2, 3, 4]
+>>> x[0:2]
+[1, 2]
+>>> x[1:4]
+[2, 3, 4]
+Even negative indices can be used in slicing. For example, the following examples strips the last element from the list.
+
+>>> x[0:-1]
+[1, 2, 3]
+Slice indices have useful defaults; an omitted first index defaults to zero, an omitted second index defaults to the size of the list being sliced.
+
+>>> x = [1, 2, 3, 4]
+>>> a[:2]
+[1, 2]
+>>> a[2:]
+[3, 4]
+>>> a[:]
+[1, 2, 3, 4]
+An optional third index can be used to specify the increment, which defaults to 1.
+
+>>> x = range(10)
+>>> x
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+>>> x[0:6:2]
+[0, 2, 4]
+We can reverse a list, just by providing -1 for increment.
+
+>>> x[::-1]
+[9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
+List members can be modified by assignment.
+
+>>> x = [1, 2, 3, 4]
+>>> x[1] = 5
+>>> x
+[1, 5, 3, 4]
+Presence of a key in a list can be tested using in operator.
+
+>>> x = [1, 2, 3, 4]
+>>> 2 in x
+True
+>>> 10 in x
+False
+Values can be appended to a list by calling append method on list. A method is just like a function, but it is associated with an object and can access that object when it is called. We will learn more about methods when we study classes.
+
+>>> a = [1, 2]
+>>> a.append(3)
+>>> a
+[1, 2, 3]
+Problem 1: What will be the output of the following program?
+
+x = [0, 1, [2]]
+x[2][0] = 3
+print x
+x[2].append(4)
+print x
+x[2] = 2
+print x
+2.1.1. The for Statement
+Python provides for statement to iterate over a list. A for statement executes the specified block of code for every element in a list.
+
+for x in [1, 2, 3, 4]:
+    print x
+
+for i  in range(10):
+   print i, i*i, i*i*i
+The built-in function zip takes two lists and returns list of pairs.
+
+>>> zip(["a", "b", "c"], [1, 2, 3])
+[('a', 1), ('b', 2), ('c', 3)]
+It is handy when we want to iterate over two lists together.
+
+names = ["a", "b", "c"]
+values = [1, 2, 3]
+for name, value in zip(names, values):
+    print name, value
+Problem 2: Python has a built-in function sum to find sum of all elements of a list. Provide an implementation for sum.
+
+>>> sum([1, 2, 3])
+>>> 4
+Problem 3: What happens when the above sum function is called with a list of strings? Can you make your sum function work for a list of strings as well.
+
+>>> sum(["hello", "world"])
+"helloworld"
+>>> sum(["aa", "bb", "cc"])
+"aabbcc"
+Problem 4: Implement a function product, to compute product of a list of numbers.
+
+>>> product([1, 2, 3])
+6
+Problem 5: Write a function factorial to compute factorial of a number. Can you use the product function defined in the previous example to compute factorial?
+
+>>> factorial(4)
+24
+Problem 6: Write a function reverse to reverse a list. Can you do this without using list slicing?
+
+>>> reverse([1, 2, 3, 4])
+[4, 3, 2, 1]
+>>> reverse(reverse([1, 2, 3, 4]))
+[1, 2, 3, 4]
+Problem 7: Python has built-in functions min and max to compute minimum and maximum of a given list. Provide an implementation for these functions. What happens when you call your min and max functions with a list of strings?
+
+Problem 8: Cumulative sum of a list [a, b, c, ...] is defined as [a, a+b, a+b+c, ...]. Write a function cumulative_sum to compute cumulative sum of a list. Does your implementation work for a list of strings?
+
+>>> cumulative_sum([1, 2, 3, 4])
+[1, 3, 6, 10]
+>>> cumulative_sum([4, 3, 2, 1])
+[4, 7, 9, 10]
+Problem 9: Write a function cumulative_product to compute cumulative product of a list of numbers.
+
+>>> cumulative_product([1, 2, 3, 4])
+[1, 2, 6, 24]
+>>> cumulative_product([4, 3, 2, 1])
+[4, 12, 24, 24]
+Problem 10: Write a function unique to find all the unique elements of a list.
+
