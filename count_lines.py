@@ -6,15 +6,18 @@ import sys
 ##    return len(open(f).readlines())
 
 def read_files (filenames):
-    for f in filenames: 
-        for line in open(f):
-            yield line
+    return (line for f in filenames for line in open(f))
+#    for f in filenames: 
+#        for line in open(f):
+#            yield line
 
 def count_iter(seq):
-    count = 0
-    for x in seq:
-        count += 1
-    return count
+    
+    return sum(1 for x in seq)
+#    count = 0
+#    for x in seq:
+#        count += 1
+#    return count
 
 def main():
     filenames = sys.argv[1:]
