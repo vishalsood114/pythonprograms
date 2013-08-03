@@ -1,4 +1,5 @@
 import time
+import urllib
 
 def profile(f):
     def g(n):
@@ -19,3 +20,9 @@ def timepass(n):
 timepass = profile(timepass)
 
 print timepass(10)
+
+@profile
+def wget(url):
+    return urllib.urlopen(url).read()
+
+x = wget("http://python.org")
