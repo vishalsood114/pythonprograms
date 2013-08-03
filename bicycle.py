@@ -2,13 +2,18 @@
 
 before_hooks = []
 
+def default_notfound():
+    return "Not Found"
+
+notfound = default_notfound
+
 def request(url):
     for h in before_hooks:
         h(url)
-    return "Not Found"
+    return notfound()
 
 def before_request(f):
-    before_hools.append(f)
+    before_hooks.append(f)
     return f
 
 def route(path):
@@ -17,4 +22,7 @@ def route(path):
 
     return fake_decor
 
-
+def on_notfound(f):
+    global notfound
+    notfound = f
+    return f
