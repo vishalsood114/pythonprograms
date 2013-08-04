@@ -7,16 +7,21 @@ import time
 def log_request(url):
     print time.asctime(), url
 
-@route("/")
+#@route("/")
+#def index():
+#    return "Welcome"
+
 def index():
     return "Welcome"
+
+decor = route("/")
+index = decor(index)
+
+@route("/login")
+def login():
+    return "Please login to continue.\nLOGIN: ____\nPASSWORD:____\nSUBMIT"
 
 @on_notfound
 def not_found():
     return "404 - This is not the page your are looking for."
 
-def main():
-    print request("/")
-
-if __name__ == "__main__":
-    main()
